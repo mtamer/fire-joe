@@ -14,16 +14,22 @@ angular.module("jitteryJoe", ["firebase"])
       $scope.reviews = jitteryReviews;
 
       $scope.addReview = function() {
+        // Get a Date object for the time.
+        var d = new Date();
+
+console.log($scope);
+
         // Build data object.
         var data = {
-          blend: $scope.newBlendRating,
+          blend: $scope.newBlend,
           comment: $scope.newComment,
-          rating: $scope.newRating
+          rating: $scope.newRating,
+          date: d.getTime()
         };
 
         // Add it via $add on the service.
         $scope.reviews.$add(data);
-        $scope.newBlendRating = $scope.newRating = $scope.newComment = "";
+        $scope.newBlend = $scope.newRating = $scope.newComment = "";
       };
     }
   ]);
