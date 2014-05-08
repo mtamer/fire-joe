@@ -1,118 +1,151 @@
 <html ng-app="jitteryJoe">
-
 <head>
-  <title>Jittery Joe</title>
+<title>Jittery Joe</title>
 
-  <!-- Bootstrap CDN -->
-  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+<!-- Bootstrap CDN -->
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
 
-  <!-- Google fonts -->
-  <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300' rel='stylesheet' type='text/css'>
+<!-- Google fonts -->
+<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700,300' rel='stylesheet' type='text/css'>
 
-  <!-- Custom stylesheet -->
-  <link rel="stylesheet" href="css/style.css" />
-
+<!-- Custom stylesheet -->
+<link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body ng-controller="JitteryController">
-  <!-- Main Container -->
-  <div class="main container">
+<!-- Main Container --> 
 
-    <!-- Header -->
-    <header class="row">
-      <div class="logo col-sm-12">
-        <img src="images/logo.png" alt="" />
-        <h1>Jittery Joe's</h1>
-        <div class="tagline">
+<!-- Header -->
+<header class="row" style="position: fixed; top: 0; left: 0; z-index: 1000; width: 100%; height: 100px; margin: 0;">
+  <div class="logo col-sm-12"> <img src="images/logo-white.png" alt="" />
+    <h2 id="header-title">Jittery Joe's</h2>
+    <!--<div class="tagline">
           Really good coffee.
-        </div>
-      </div>
-    </header>
-
-    <!-- Review form -->
-    <div class="row review-form-wrapper">
-      <form name="ratingForm" ng-submit="addReview();">
-
-        <!-- Select - Blend -->
-        <div class="blend-review-group form-group col-sm-4">
-          <label for="new-blend-review">Choose a blend</label>
-          <select ng-model="newBlend" name="new-blend-review" class="new-blend-review form-control">
-            <option ng-repeat="type in types" value="{{type}}">{{type}}</option>
-          </select>
-        </div>
-
-        <!-- Radio - Rating -->
-        <div class="rating-review-group form-group col-sm-8">
-          <label>Blend rating</label>
-          <br />
-          <label ng-repeat="num in [1,2,3,4,5]" class="radio-inline">
-            <input ng-model="newRating" type="radio" id="rating-{{num}}" name="new-rating-review" value="{{num}}">
-            {{num}}
-          </label>
-        </div>
-
-        <!-- Textarea - Comment -->
-        <div class="comment-review-group form-group col-sm-12">
-          <label for="new-comment-review">Comment</label>
-          <textarea ng-model="newComment" class="new-comment-review form-control" rows="3" name="new-comment-review"></textarea>
-        </div>
-
-        <!-- Button - Submit -->
-        <div class="submit form-group col-sm-12">
-          <button type="submit" class="btn btn-default pull-right">Send</button>
-        </div>
-      </form>
-    </div>
-
-    <!--_____________________________-->
-    <hr />
-
-    <!-- Reviews -->
-    <div class="row reviews-wrapper">
-      <!-- Review -->
-      <div class="col-sm-6 review" ng-repeat="review in reviews">
-        <h4 class="review-blend">{{review.blend}}</h4>
-        -
-        <div class="review-rating">{{review.rating}}/5</div>
-        <div class="review-comment">{{review.comment}}</div>
-        <div class="review-date pull-right">{{ (review.date * 1000) | date: 'MMM d - h:mma' }}</div>
-      </div>
-    </div>
-
-    <!--_____________________________-->
-    <hr />
-
-
-    <!-- Footer -->
-    <footer class="row">
-      <div class="col-sm-12">
-
-        <!-- Logo -->
-        <div class="col-sm-6">
-          <div class="logo">
-            <img src="images/logo.png" alt="" />
-            <div class="tagline">
-              Really good coffee.
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </footer>
-
+        </div>--> 
   </div>
+</header>
 
-  <!-- Angular CDN -->
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+<!-- Carousel -->
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="top: 100px; margin-bottom: 100px"> 
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+  
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+  
+    <div class="item active" style="height: 400px; background: url(images/carousel/slide01.jpg) bottom center;">
+      <div class="carousel-caption">
+        <h1>Really good coffee.</h1>
+        <h3>Also, poems.</h3>
+      </div>
+    </div>
+    
+    <div class="item" style="height: 400px; background: url(images/carousel/slide02.jpg) bottom center;"> 
+      <div class="carousel-caption">
+        <h1>Blend of the week: The Jittery</h1>
+        <p><button class="btn btn-success">Learn more about it</button></p>
+        <p><a>Check out all our blends &raquo;</a></p>
+      </div>
+    </div>
+    
+    <div class="item" style="height: 400px; background: url(images/carousel/slide03.jpg) bottom center;"> 
+      <div class="carousel-caption">
+        <h1>Questions? Complaints?</h1>
+        <h3>Joe wants your feedback!</h3>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Controls --> 
+  <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right carousel-control" href="#carousel-example-generic" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a> </div>
+<div class="main container"> 
+  
+  <!-- Review form -->
+  <div class="row review-form-wrapper">
+    <form name="ratingForm" ng-submit="addReview();">
+      
+      <!-- Select - Blend -->
+      <div class="blend-review-group form-group col-sm-4">
+        <label for="new-blend-review">Choose a blend</label>
+        <select ng-model="newBlend" name="new-blend-review" class="new-blend-review form-control">
+          <option ng-repeat="type in types" value="{{type}}">{{type}}</option>
+        </select>
+      </div>
+      
+      <!-- Radio - Rating -->
+      <div class="rating-review-group form-group col-sm-8">
+        <label>Blend rating</label>
+        <br />
+        <label ng-repeat="num in [1,2,3,4,5]" class="radio-inline">
+          <input ng-model="newRating" type="radio" id="rating-{{num}}" name="new-rating-review" value="{{num}}">
+          {{num}} </label>
+      </div>
+      
+      <!-- Textarea - Comment -->
+      <div class="comment-review-group form-group col-sm-12">
+        <label for="new-comment-review">Comment</label>
+        <textarea ng-model="newComment" class="new-comment-review form-control" rows="3" name="new-comment-review"></textarea>
+      </div>
+      
+      <!-- Button - Submit -->
+      <div class="submit form-group col-sm-12">
+        <button type="submit" class="btn btn-default pull-right">Send</button>
+      </div>
+    </form>
+  </div>
+  
+  <!--_____________________________-->
+  <hr />
+  
+  <!-- Reviews -->
+  <div class="row reviews-wrapper"> 
+    <!-- Review -->
+    <div class="col-sm-6 review" ng-repeat="review in reviews">
+      <h4 class="review-blend">{{review.blend}}</h4>
+      -
+      <div class="review-rating">{{review.rating}}/5</div>
+      <div class="review-comment">{{review.comment}}</div>
+      <div class="review-date pull-right">{{ (review.date * 1000) | date: 'MMM d - h:mma' }}</div>
+    </div>
+  </div>
+  
+  <!--_____________________________-->
+  <hr />
+  
+  <!-- Footer -->
+  <footer class="row">
+    <div class="col-sm-12"> 
+      
+      <!-- Logo -->
+      <div class="col-sm-6">
+        <div class="logo"> <img src="images/logo.png" alt="" />
+          <div class="tagline"> Really good coffee. </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
 
-  <!-- Firebase CDN -->
-  <script src="http://cdn.firebase.com/js/client/1.0.6/firebase.js"></script>
+<!-- Angular CDN --> 
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script> 
 
-  <!-- AngularFire CDN -->
-  <script src="http://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
+<!-- Firebase CDN --> 
+<script src="http://cdn.firebase.com/js/client/1.0.6/firebase.js"></script> 
 
-  <!-- Custom JS -->
-  <script src="js/app.js"></script>
+<!-- AngularFire CDN --> 
+<script src="http://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script> 
 
+<!-- Bootstrap and jQ --> 
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+
+<!-- Custom JS --> 
+<script src="js/app.js"></script>
 </body>
 </html>

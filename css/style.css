@@ -15,6 +15,23 @@ h6 {
   font-weight: bold;
 }
 
+h2#header-title {
+	font-size: 18pt;
+	display: inline;
+}
+
+header {
+	background: #333;
+	color: #FFF;
+}
+
+.carousel-caption p a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.carousel-caption p a:hover { text-decoration: underline; }
+
 .main.container {
   margin: auto;
   width: 800px;
@@ -48,12 +65,12 @@ form label {
 /**
  * Header
  */
-.logo {
-  text-align: center;
+.logo { 
 }
+
 .logo img {
-  height: 150px;
-  margin: 20px auto -20px;
+  height: 80px;
+  margin: 10px;
   width: auto;
 }
 .logo h1 {
